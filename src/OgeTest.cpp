@@ -119,11 +119,6 @@ public:
         if(input.keyDown(sKey)) displacement.y += 300 * dt;
         if(input.keyDown(aKey)) displacement.x -= 300 * dt;
         if(input.keyDown(dKey)) displacement.x += 300 * dt;
-        if(input.keyDown(SDLK_u))
-        {
-            spr.center = Vector2f(0.f, 0.f);
-            spr.rotation += 10;
-        }
         vel.vel = displacement;
         if(input.keyDown(SDLK_p))
         {
