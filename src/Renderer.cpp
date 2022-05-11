@@ -43,7 +43,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         coords += sprite.off;
         coords -= cameraPos;
 
-        size *= sprite.scale;
+        size *= sprite.scale * tran.scale;
 
         Rect renderRect(coords.x, coords.y, size.x, size.y);
         if(window.intersects(renderRect))

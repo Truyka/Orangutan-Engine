@@ -119,6 +119,8 @@ public:
         if(input.keyDown(sKey)) displacement.y += 300 * dt;
         if(input.keyDown(aKey)) displacement.x -= 300 * dt;
         if(input.keyDown(dKey)) displacement.x += 300 * dt;
+        if(input.keyDown(SDLK_u)) t.scale += 0.01;
+        if(input.keyDown(SDLK_j)) t.scale -= 0.01;
         vel.vel = displacement;
         if(input.keyDown(SDLK_p))
         {

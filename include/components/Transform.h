@@ -13,8 +13,8 @@ namespace oge
 */
 struct Transform
 {
-    Transform(float x, float y) : pos(x, y), oldPos(x, y) {}
-    Transform(Vector2f _pos) : pos(_pos), oldPos(_pos) {}
+    Transform(float x, float y, float s = 1.f) : pos(x, y), oldPos(x, y), scale(s) {}
+    Transform(Vector2f _pos, float s = 1.f) : pos(_pos), oldPos(_pos), scale(s) {}
 
     void setPosition(const Vector2f& newPos)
     {
@@ -27,9 +27,10 @@ struct Transform
         setPosition(Vector2f(x, y));
     }
 
-
     Vector2f pos;
     Vector2f oldPos;
+
+    float scale;
 };
 
 

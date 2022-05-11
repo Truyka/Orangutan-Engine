@@ -28,7 +28,12 @@ inline Rect computeHitbox(Transform& t, Collider& c)
     Vector2f& pos = t.pos;
     Rect& box = c.hitbox;
 
-    return Rect(box.x + pos.x, box.y + pos.y, box.w, box.h).round();
+    return Rect(
+        box.x + pos.x, 
+        box.y + pos.y, 
+        box.w * t.scale, 
+        box.h * t.scale
+    ).round();
 }
 
 inline Rect getHitbox(aecs::Registry& reg, aecs::Entity ent)
