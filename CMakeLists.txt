@@ -47,8 +47,8 @@ link_directories("C:/devel/SDL2_image/lib")
 link_directories("C:/devel/SDL2_ttf/lib")
 link_directories("C:/devel/SDL2_mixer/lib")
 
-add_executable(orangutan main.cpp ${CPP_SRCS})
-# add_library(orangutan ${CPP_SRCS})
+# add_executable(orangutan main.cpp ${CPP_SRCS})
+add_library(orangutan ${CPP_SRCS})
 
 target_link_libraries(orangutan PUBLIC 
     aecslib 

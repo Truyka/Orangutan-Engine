@@ -67,6 +67,8 @@ struct Sprite
     Flip flip = Flip::None;
     Vector2f center = Vector2f::null;
 
+    int zindex = 0;
+
     Vector2f off = Vector2f(0.f, 0.f);
 };
 

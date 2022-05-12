@@ -214,7 +214,7 @@ MainScene::MainScene()
     Entity entity = createEntity("Gracz");
     entity.add<Transform>(0, 0);
     entity.add<Velocity>(Vector2f(0, 0));
-    entity.add<Sprite>("orangutan.png", 100, 100);
+    entity.add<Sprite>("orangutan.png", 100, 100).zindex = 1;
     entity.add<ScriptList>().bind<MoveScript>(SDLK_w, SDLK_s, SDLK_a, SDLK_d);
     entity.add<ScriptList>().bind<CollisionResolver>([](auto... args){ return true; });
     entity.add<Collider>(Rect(0, 0, 100, 100));

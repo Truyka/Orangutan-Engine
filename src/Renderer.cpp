@@ -13,6 +13,7 @@
 #include <float.h>
 #include <math.h>
 #include <iostream>
+#include <queue>
 
 namespace oge
 {
@@ -27,6 +28,26 @@ void Renderer::render(Scene& scene, const double interpolate)
     window.y = 0;
 
     Vector2f cameraPos = scene.getCameraPosition(interpolate);
+
+    struct RenderInfo
+    {
+        TextureInfo info;
+        Rect renderRect;
+        Sprite spr;
+    };
+
+    // Workaround to reserve space in a priority queue
+    std::vector<RenderInfo> renderTargetsTemp;
+    renderTargetsTemp.reserve(1024);
+
+    auto comp = [](const RenderInfo& a, const RenderInfo& b)
+    {
+        return a.spr.zindex > b.spr.zindex;
+    };
+
+    std::priority_queue<RenderInfo, std::vector<RenderInfo>, decltype(comp)> renderTargets (
+        comp, std::move(renderTargetsTemp)
+    );
 
     auto view = scene.view<Sprite, Transform>();
     view.each([&](Sprite& sprite, Transform& tran)
@@ -48,11 +69,19 @@ void Renderer::render(Scene& scene, const double interpolate)
         Rect renderRect(coords.x, coords.y, size.x, size.y);
         if(window.intersects(renderRect))
         {
-            graphics.render(info, renderRect, sprite.clip, sprite.rotation, sprite.center, sprite.flip);
+            renderTargets.push(RenderInfo{info, renderRect, sprite});
         }
 
         sprite.renderSize = size;
     });
+
+    while(!renderTargets.empty())
+    {
+        RenderInfo i = renderTargets.top();
+        renderTargets.pop();
+
+        graphics.render(i.info, i.renderRect, i.spr.clip, i.spr.rotation, i.spr.center, i.spr.flip);
+    }
 
     if(debug_)
     {
