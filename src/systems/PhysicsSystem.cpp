@@ -14,20 +14,27 @@ void PhysicsSystem::onUpdate(const float dt)
 {
     // Update the velocities
     {
-        auto view = scene_->view<Velocity, Acceleration>();
+        auto view = scene_->view<Velocity>();
         for(const auto& entity : view)
         {
             Velocity& vel = scene_->get<Velocity>(entity);
-            Acceleration& acc = scene_->get<Acceleration>(entity);
 
-            Damping* damp = scene_->try_get<Damping>(entity);
+            Acceleration* accel = scene_->try_get<Acceleration>(entity);
+            Damping* damping = scene_->try_get<Damping>(entity);
 
-            Vector2f sub(0.f, 0.f);
-            if(damp != nullptr)
+            Vector2f damp(0.f, 0.f);
+            if(damping != nullptr)
             {
-                sub = -vel.vel * damp->damping;
+                damp = -vel.vel * damping->damping;
             }
-            vel.vel += acc.acc + sub;
+
+            Vector2f acc(0.f, 0.f);
+            if(accel != nullptr)
+            {
+                acc = accel->acc;
+            }
+
+            vel.vel += acc + damp;
         }
     }
 
