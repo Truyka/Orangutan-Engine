@@ -17,14 +17,14 @@ inline float round(float x, int point)
     return std::round(x * pwd) / pwd;
 }
 
-inline double lerp(double v0, double v1, double t)
+inline float lerp(float v0, float v1, float t)
 {
-    return v1 * t + v0 * (1.0 - t);
+    return v1 * t + v0 * (1.0f - t);
 }
 
-inline Vector2f lerp(const Vector2f& v0, const Vector2f& v1, double t)
+inline Vector2f lerp(const Vector2f& v0, const Vector2f& v1, float t)
 {
-    return v1 * t + v0 * (1.0 - t);
+    return v1 * t + v0 * (1.0f - t);
 }
 
 inline Vector2f abs(const Vector2f& vec)
