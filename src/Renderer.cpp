@@ -34,6 +34,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         TextureInfo info;
         Rect renderRect;
         Sprite spr;
+        aecs::Entity ent;
     };
 
     // Workaround to reserve space in a priority queue
@@ -42,6 +43,11 @@ void Renderer::render(Scene& scene, const double interpolate)
 
     auto comp = [](const RenderInfo& a, const RenderInfo& b)
     {
+        // For consistency we're rendering newer entities first
+        // if zindex is the same
+        if(a.spr.zindex == b.spr.zindex)
+            return a.ent.index > b.ent.index;
+        
         return a.spr.zindex > b.spr.zindex;
     };
 
@@ -50,8 +56,11 @@ void Renderer::render(Scene& scene, const double interpolate)
     );
 
     auto view = scene.view<Sprite, Transform>();
-    view.each([&](Sprite& sprite, Transform& tran)
+    for(const auto& entity : view)
     {
+        Sprite& sprite = scene.get<Sprite>(entity);
+        Transform& tran = scene.get<Transform>(entity);
+
         Vector2f coords = tran.pos;
         Vector2f size = sprite.getSize();
 
@@ -59,7 +68,8 @@ void Renderer::render(Scene& scene, const double interpolate)
         if(size.x == 0) size.x = info.width;
         if(size.y == 0) size.y = info.height;
 
-        coords = Math::lerp(tran.oldPos, tran.pos, interpolate);
+        if(tran.oldPos != tran.pos)
+            coords = Math::lerp(tran.oldPos, tran.pos, interpolate);
 
         coords += sprite.off;
         coords -= cameraPos;
@@ -69,11 +79,11 @@ void Renderer::render(Scene& scene, const double interpolate)
         Rect renderRect(coords.x, coords.y, size.x, size.y);
         if(window.intersects(renderRect))
         {
-            renderTargets.push(RenderInfo{info, renderRect, sprite});
+            renderTargets.push(RenderInfo{info, renderRect, sprite, entity});
         }
 
         sprite.renderSize = size;
-    });
+    }
 
     while(!renderTargets.empty())
     {
