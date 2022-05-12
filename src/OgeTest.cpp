@@ -204,6 +204,8 @@ public:
  * Poczytaj nt. zastapienia dynamic_casta static_castem w aecs::registry
  * Sprawdz cleanup i ogarnij oge::Graphics
  * Szybko poruszajca sie obiekty blokuja sie o orangutanow ustawionych w rzadku przy dampingu i akceleracji
+ * Moza clampowanie zamiast zaokraglania, zaokraglanie skacze jezeli pozycja ma 0.5 po przecinku
+ * Konstruktor do Follow
 */
 
 MainScene::MainScene()
@@ -237,7 +239,7 @@ MainScene::MainScene()
     Entity camera = createEntity();
     camera.add<Transform>(0, 0);
     camera.add<Camera>(CameraType::Centered, Vector2f(100/2, 100/2));
-    camera.add<Follow>(entity, 0.3);
+    camera.add<Follow>(entity, 0.3f);
 
     for(int i = 0; i < 10; i++)
     {
