@@ -15,7 +15,9 @@ void FollowSystem::onUpdate(const float dt)
     view.each([&](Follow& follow, Transform& t)
     {
         Transform* trackedPos = scene_->try_get<Transform>(follow.entity);
-        if(trackedPos != nullptr)
+
+        /// TODO: Change this to not use lerp and Vector2f.length()
+        if(trackedPos != nullptr && (trackedPos->pos - t.pos).length() > 0.01f)
         {
             t.pos = Math::lerp(t.pos, trackedPos->pos, follow.speed);
         }
