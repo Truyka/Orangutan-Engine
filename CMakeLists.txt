@@ -61,3 +61,8 @@ target_link_libraries(orangutan PUBLIC
 )
 
 target_include_directories(orangutan PUBLIC ${INCLUDE_DIRS})
+
+add_executable(test main.cpp)
+target_link_libraries(test PUBLIC orangutan)
+target_include_directories(test PUBLIC ${INCLUDE_DIRS})
+

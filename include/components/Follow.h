@@ -11,7 +11,7 @@ namespace oge
 struct Follow
 {
     aecs::Entity entity = aecs::Entity(SIZE_MAX, SIZE_MAX);
-    double speed = 1.0;
+    float speed = 1.f;
 };
 
 

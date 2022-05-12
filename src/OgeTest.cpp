@@ -203,6 +203,7 @@ public:
  * Dodawanie ScriptList w trakcie onUpdate skryptu
  * Poczytaj nt. zastapienia dynamic_casta static_castem w aecs::registry
  * Sprawdz cleanup i ogarnij oge::Graphics
+ * Szybko poruszajca sie obiekty blokuja sie o orangutanow ustawionych w rzadku przy dampingu i akceleracji
 */
 
 MainScene::MainScene()

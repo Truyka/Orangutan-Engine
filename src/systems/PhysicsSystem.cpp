@@ -12,6 +12,25 @@ namespace oge
 
 void PhysicsSystem::onUpdate(const float dt)
 {
+    // Update the velocities
+    {
+        auto view = scene_->view<Velocity, Acceleration>();
+        for(const auto& entity : view)
+        {
+            Velocity& vel = scene_->get<Velocity>(entity);
+            Acceleration& acc = scene_->get<Acceleration>(entity);
+
+            Damping* damp = scene_->try_get<Damping>(entity);
+
+            Vector2f sub(0.f, 0.f);
+            if(damp != nullptr)
+            {
+                sub = -vel.vel * damp->damping;
+            }
+            vel.vel += acc.acc + sub;
+        }
+    }
+
     SceneGraph* graph = scene_->getSceneGraph();
 
     auto view = scene_->view<Transform, Collider>();
@@ -64,8 +83,8 @@ void PhysicsSystem::onUpdate(const float dt)
                     const Vector2f& pos1 = scene_->get<Transform>(p1.first).pos;
                     const Vector2f& pos2 = scene_->get<Transform>(p2.first).pos;
 
-                    float dist1 = std::abs(pos1.x - tran.pos.x) + std::abs(pos1.y - tran.pos.y);
-                    float dist2 = std::abs(pos2.x - tran.pos.x) + std::abs(pos2.y - tran.pos.y);
+                    float dist1 = std::pow(pos1.x - tran.pos.x, 2) + std::pow(pos1.y - tran.pos.y, 2);
+                    float dist2 = std::pow(pos2.x - tran.pos.x, 2) + std::pow(pos2.y - tran.pos.y, 2);
 
                     return dist1 < dist2;
                 }
@@ -112,6 +131,7 @@ void PhysicsSystem::onUpdate(const float dt)
         }
     }
 
+    // Update the positions
     {
         auto view = scene_->view<Velocity, Transform>();
         view.each([&](Velocity& vel, Transform& t)
@@ -120,7 +140,7 @@ void PhysicsSystem::onUpdate(const float dt)
         });
     }
 
-    // Update the graph becasue entities moved
+    // Update the graph because entities moved
     graph->update();
 
     for(auto& entity : staticEntities)
