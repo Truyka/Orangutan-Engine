@@ -80,7 +80,7 @@ inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
 
     finalCameraPos += camera.off;
 
-    return finalCameraPos; 
+    return finalCameraPos.round(); 
 }
 
 inline Vector2f Camera::getCurrentCenter(aecs::Registry& reg, float interp)
@@ -91,7 +91,7 @@ inline Vector2f Camera::getCurrentCenter(aecs::Registry& reg, float interp)
     pos.x += window.w / 2;
     pos.y += window.h / 2;
 
-    return pos;
+    return pos.round();
 }
 
 
