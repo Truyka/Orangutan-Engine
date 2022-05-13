@@ -239,7 +239,7 @@ MainScene::MainScene()
     Entity camera = createEntity();
     camera.add<Transform>(0, 0);
     camera.add<Camera>(CameraType::Centered, Vector2f(100/2, 100/2));
-    camera.add<Follow>(entity, 0.3f);
+    camera.add<Follow>(entity, 0.15f);
 
     for(int i = 0; i < 10; i++)
     {

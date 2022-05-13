@@ -74,8 +74,8 @@ inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
     Rect window = Graphics::instance().getWindowRect();
     if(camera.type == CameraType::Centered)
     {
-        finalCameraPos.x -= window.w / 2;
-        finalCameraPos.y -= window.h / 2;
+        finalCameraPos.x -= window.w / 2.f;
+        finalCameraPos.y -= window.h / 2.f;
     }
 
     finalCameraPos += camera.off;
