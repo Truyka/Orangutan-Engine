@@ -24,7 +24,10 @@ inline float lerp(float v0, float v1, float t)
 
 inline Vector2f lerp(const Vector2f& v0, const Vector2f& v1, float t)
 {
-    return v1 * t + v0 * (1.0f - t);
+    return Vector2f(
+        Math::lerp(v0.x, v1.x, t),
+        Math::lerp(v0.y, v1.y, t)
+    );
 }
 
 inline Vector2f abs(const Vector2f& vec)
