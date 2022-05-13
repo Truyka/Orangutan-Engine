@@ -33,7 +33,7 @@ inline Vector2f lerp(const Vector2f& v0, const Vector2f& v1, float t)
 inline Vector2f interpTo(const Vector2f& v0, const Vector2f& v1, float speed)
 {
     Vector2f diff = (v1 - v0);
-    if(diff.length() < 0.1f)
+    if(diff.length() < 0.1)
     {
         return v1;
     }

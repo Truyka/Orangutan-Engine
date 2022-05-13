@@ -211,8 +211,8 @@ public:
 MainScene::MainScene()
 {
     systems_.add<ScriptSystem>();
-    systems_.add<FollowSystem>();
     systems_.add<PhysicsSystem>();
+    systems_.add<FollowSystem>();
 
     Entity entity = createEntity("Gracz");
     entity.add<Transform>(0, 0);
