@@ -19,7 +19,7 @@ void FollowSystem::onUpdate(const float dt)
         /// TODO: Change this to not use lerp
         if(trackedPos != nullptr)
         {
-            t.pos = Math::lerp(t.pos, trackedPos->pos, follow.speed);
+            t.pos = Math::interpTo(t.pos, trackedPos->pos, follow.speed);
         }
     });
 }
