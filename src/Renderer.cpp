@@ -28,7 +28,6 @@ void Renderer::render(Scene& scene, const double interpolate)
     window.y = 0;
 
     Vector2f cameraPos = scene.getCameraPosition(interpolate);
-    std::cout << cameraPos.toString() << std::endl;
 
     struct RenderInfo
     {
