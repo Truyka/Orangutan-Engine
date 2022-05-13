@@ -28,6 +28,7 @@ void Renderer::render(Scene& scene, const double interpolate)
     window.y = 0;
 
     Vector2f cameraPos = scene.getCameraPosition(interpolate);
+    std::cout << cameraPos.toString() << std::endl;
 
     struct RenderInfo
     {
@@ -68,8 +69,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         if(size.x == 0) size.x = info.width;
         if(size.y == 0) size.y = info.height;
 
-        if(tran.oldPos != tran.pos)
-            coords = Math::lerp(tran.oldPos, tran.pos, interpolate);
+        coords = Math::lerp(tran.oldPos, tran.pos, interpolate);
 
         coords += sprite.off;
         coords -= cameraPos;
