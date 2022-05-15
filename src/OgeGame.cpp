@@ -105,8 +105,8 @@ void Game::gameLoop()
 
         if(options.basicLoop)
         {
-            if(lastFrame < options.frame_time * 0.99)
-                Timer::sleep(duration_cast<Timer::us>(options.frame_time * 0.99 - lastFrame).count());
+            if(lastFrame < options.frame_time * 0.98)
+                Timer::sleep(duration_cast<Timer::us>(options.frame_time * 0.98 - lastFrame).count());
         }
     }
 }

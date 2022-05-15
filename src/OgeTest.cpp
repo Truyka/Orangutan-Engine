@@ -257,6 +257,16 @@ MainScene::MainScene()
         ent.add<Collider>(Rect(0, 0, 100, 100));
     }
 
+    /*for(int y = 0; y < 20; y++)
+    {
+        for(int x = 0; x < 20; x++)
+        {   
+            Entity tile = createEntity();
+            tile.add<Transform>(100.f * x, 100.f * y);
+            tile.add<Sprite>("tileset.png", 100, 100, Rect(96, 0, 32, 32)).zindex = -2;
+        }
+    }*/
+
     /*Entity who = entity;
     for(int i = 0; i < 500; i++)
     {

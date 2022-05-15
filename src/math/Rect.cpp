@@ -22,8 +22,8 @@ Rect::Rect() : x(0.f), y(0.f), w(0.f), h(0.f)
 SDL_Rect Rect::toSDLRect() const
 {
     return SDL_Rect {
-        int(std::round(x + 0.001f)),
-        int(std::round(y + 0.001f)),
+        int(x + 0.1f),
+        int(y + 0.1f),
         int(w),
         int(h)
     };
