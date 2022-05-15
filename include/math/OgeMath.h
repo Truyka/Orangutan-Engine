@@ -19,6 +19,8 @@ inline float round(float x, int point)
 
 inline float lerp(float v0, float v1, float t)
 {
+    if(v0 == v1)
+        return v1;
     return v1 * t + v0 * (1.0f - t);
 }
 
