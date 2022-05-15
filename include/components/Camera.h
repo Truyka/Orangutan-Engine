@@ -69,7 +69,7 @@ inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
         camera.off += RNG.rollDirection() * camera.shakeForce;
     }
 
-    finalCameraPos = Math::lerp(cameraTran.oldPos, cameraTran.pos, interp);
+    finalCameraPos = Math::lerp(cameraTran.oldPos.rounded(), cameraTran.pos.rounded(), interp);
 
     Rect window = Graphics::instance().getWindowRect();
     if(camera.type == CameraType::Centered)

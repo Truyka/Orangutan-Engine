@@ -68,7 +68,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         if(size.x == 0) size.x = info.width;
         if(size.y == 0) size.y = info.height;
 
-        coords = Math::lerp(tran.oldPos, tran.pos, interpolate);
+        coords = Math::lerp(tran.oldPos.rounded(), tran.pos.rounded(), interpolate);
 
         coords += sprite.off;
         coords -= cameraPos;
