@@ -17,6 +17,9 @@ struct GameOptions
 
     GameOptions(int desired_frames)
     {
+        basicLoop = false;
+        dtSmoothening = false;
+
         framerate = desired_frames;
         dt = 1.f / double(framerate);
 
@@ -24,6 +27,8 @@ struct GameOptions
         frame_time = std::chrono::duration_cast<Duration>(secs);
     }
 
+    bool dtSmoothening;
+    bool basicLoop;
     int framerate;
     double dt;
     Duration frame_time;
@@ -35,6 +40,9 @@ public:
     Game();
 
     void gameLoop();
+
+
+    GameOptions options;
 
 protected:
     bool quitFlag;

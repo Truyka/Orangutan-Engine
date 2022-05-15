@@ -33,12 +33,12 @@ inline Vector2f lerp(const Vector2f& v0, const Vector2f& v1, float t)
 inline Vector2f interpTo(const Vector2f& v0, const Vector2f& v1, float speed)
 {
     Vector2f diff = (v1 - v0);
-    if(diff.length() < 0.1)
+    if(diff.length() < 0.5f)
     {
         return v1;
     }
 
-    return v0 + diff * speed;
+    return Math::lerp(v0, v1, speed);
 }
 
 inline Vector2f abs(const Vector2f& vec)
