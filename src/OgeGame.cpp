@@ -91,7 +91,7 @@ void Game::gameLoop()
         /* =RENDERING= */
 
         // Calculate how far are we into the current frame
-        float alpha = float(accumulator.count()) / float(options.frame_time.count());
+        double alpha = double(accumulator.count()) / double(options.frame_time.count());
         if(options.basicLoop)
             alpha = 1.0;
         

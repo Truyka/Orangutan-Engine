@@ -18,7 +18,7 @@ struct GameOptions
     GameOptions(int desired_frames)
     {
         basicLoop = false;
-        dtSmoothening = false;
+        dtSmoothening = true;
 
         framerate = desired_frames;
         dt = 1.f / double(framerate);
