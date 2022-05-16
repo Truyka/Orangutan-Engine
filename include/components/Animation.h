@@ -83,7 +83,7 @@ struct Animation
 struct Animated
 {
     std::vector<Animation> animations;
-    size_t currentIdx;
+    size_t currentIdx = 0;
 
     Animation& current()
     {
