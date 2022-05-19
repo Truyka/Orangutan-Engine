@@ -70,6 +70,9 @@ enum class Flip
     Vertical = SDL_FLIP_VERTICAL
 };
 
+/** Forward declaration of sprite */
+struct Sprite;
+
 /**
  * @brief A singleton class wrapping SDL's functionality to 
  * create a window and render things to the screen. The constructor
@@ -111,7 +114,8 @@ public:
                 Rect textureClip = Rect::none, 
                 const float angle = 0.f, 
                 Vector2f center = Vector2f::null, 
-                Flip flip = Flip::None);
+                Flip flip = Flip::None,
+                Color col = Color(255, 255, 255));
     
     void render(std::string path, Rect renderDest, Rect textureClip = Rect::none);
 

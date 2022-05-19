@@ -70,6 +70,8 @@ struct Sprite
     int zindex = 0;
 
     Vector2f off = Vector2f(0.f, 0.f);
+
+    Color modColor = Color(255, 255, 255, 255);
 };
 
 

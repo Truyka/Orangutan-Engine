@@ -1,4 +1,5 @@
 #include "Graphics.h"
+#include "components/Sprite.h"
 
 namespace oge
 {
@@ -101,7 +102,7 @@ void Graphics::renderClear(Color color)
 }
 
 void Graphics::render(TextureInfo texture, Rect renderDest, Rect textureClip, 
-                      const float angle, Vector2f center, Flip flip)
+                      const float angle, Vector2f center, Flip flip, Color col)
 {   
     SDL_Rect dest = renderDest.toSDLRect();
     SDL_Rect clip = textureClip.toSDLRect();
@@ -112,6 +113,7 @@ void Graphics::render(TextureInfo texture, Rect renderDest, Rect textureClip,
 
     SDL_RendererFlip flipSDL = SDL_RendererFlip(flip);
 
+    SDL_SetTextureColorMod(texture.texture, col.r, col.g, col.b);
     SDL_RenderCopyEx(renderer_, texture.texture, clipPtr, &dest, angle, pointPtr, flipSDL);
 }
 

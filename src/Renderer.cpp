@@ -89,7 +89,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         RenderInfo i = renderTargets.top();
         renderTargets.pop();
 
-        graphics.render(i.info, i.renderRect, i.spr.clip, i.spr.rotation, i.spr.center, i.spr.flip);
+        graphics.render(i.info, i.renderRect, i.spr.clip, i.spr.rotation, i.spr.center, i.spr.flip, i.spr.modColor);
     }
 
     if(debug_)
