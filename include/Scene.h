@@ -67,6 +67,12 @@ public:
     template<typename T>
     void changeTo();
 
+    template<typename T>
+    void removeComponent(aecs::Entity ent)
+    {
+        this->remove<T>(ent);
+    }
+
     void removeEntity(aecs::Entity ent);
     void cleanupRemoved();
 
