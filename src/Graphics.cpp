@@ -114,6 +114,7 @@ void Graphics::render(TextureInfo texture, Rect renderDest, Rect textureClip,
     SDL_RendererFlip flipSDL = SDL_RendererFlip(flip);
 
     SDL_SetTextureColorMod(texture.texture, col.r, col.g, col.b);
+    SDL_SetTextureAlphaMod(texture.texture, col.a);
     SDL_RenderCopyEx(renderer_, texture.texture, clipPtr, &dest, angle, pointPtr, flipSDL);
 }
 
