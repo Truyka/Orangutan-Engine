@@ -3,6 +3,7 @@
 
 #include "Graphics.h"
 #include "math/OgeMath.h"
+#include "OgeEntity.h"
 
 #include <string>
 #include <float.h>
@@ -23,6 +24,19 @@ struct Sprite
         : path(p), size(s), clip(c), renderSize(size)
     {
 
+    }
+
+    /**
+     * @brief Returns the current center of entity ent
+     * 
+     * @return Vector2f 
+    */
+    static Vector2f getCenter(Entity ent)
+    {
+        Transform& t = ent.get<Transform>();
+        Sprite& spr = ent.get<Sprite>();
+
+        return t.pos + (spr.renderSize == Vector2f(0.f, 0.f) ? spr.size : spr.renderSize) / 2.f;
     }
 
     Vector2f getSize()
