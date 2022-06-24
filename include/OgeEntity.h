@@ -49,7 +49,7 @@ public:
         return scene_->try_get<C>(entity_);
     }
 
-    template<typename C>
+    template<typename... C>
     bool has()
     {
         OGE_ASSERT(scene_ != nullptr, "Trying to use a deleted entity!");
