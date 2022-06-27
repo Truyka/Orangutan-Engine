@@ -200,6 +200,9 @@ public:
 };
 
 /** TODO:
+ * !!! Tree rebuild after too many removed entities
+ * 
+ * 
  * Dodawanie ScriptList w trakcie onUpdate skryptu
  * Poczytaj nt. zastapienia dynamic_casta static_castem w aecs::registry
  * Sprawdz cleanup i ogarnij oge::Graphics
