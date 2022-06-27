@@ -37,7 +37,17 @@ Vector2f Vector2f::fromDegrees(float degree)
 
 Vector2f Vector2f::fromRadians(float rad)
 {
-    return Vector2f(std::sin(rad), -std::cos(rad));
+    return Vector2f(std::cos(rad), std::sin(rad));
+}
+
+float Vector2f::toDegrees()
+{
+    return this->toRadians() * 57.2957795;
+}
+
+float Vector2f::toRadians()
+{
+    return std::atan2(y, x);
 }
 
 float Vector2f::length() const

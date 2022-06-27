@@ -19,6 +19,9 @@ public:
     static Vector2f fromDegrees(float degree);
     static Vector2f fromRadians(float rad);
 
+    float toDegrees();
+    float toRadians();
+
     float length() const;
 
     Vector2f  normalized() const;
