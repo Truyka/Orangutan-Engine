@@ -78,6 +78,17 @@ inline float dot(const Vector2f& v1, const Vector2f& v2)
     return (v1.x * v2.x) + (v1.y * v2.y);
 }
 
+/**
+ * @brief Provides a smooth transition from 0 to `lim` and
+ * from `lim` to 0 as x grows. For example, it grows for
+ * range <0, lim> and shrinks in range <lim, 2lim>, then it
+ * grows again etc.
+*/
+inline float smlimit(float x, float lim)
+{
+    return std::abs(std::abs(std::fmod(x + lim, 2 * lim)) - lim);
+}
 
-} // namespace oge
+
+} // namespace oge::Math
 #endif // __MATH_H__
