@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 namespace oge
 {
@@ -82,21 +83,27 @@ struct Animation
 
 struct Animated
 {
-    std::vector<Animation> animations;
-    size_t currentIdx = 0;
+    std::map<std::string, Animation> animations;
+    std::string currentKey;
+
+    size_t size() const
+    {
+        return animations.size();
+    }
 
     Animation& current()
     {
-        return animations.at(currentIdx);
+        return animations[currentKey];
     }
 
-    void changeTo(size_t n)
+    void changeTo(const std::string& id)
     {
-        if(n < animations.size())
+        auto it = animations.find(id);
+        if(it != animations.end())
         {
             Animation& anim = current();
             if(anim.reset) anim.currentIdx = 0;
-            currentIdx = n;
+            currentKey = id;
         }
     }
 
@@ -104,15 +111,24 @@ struct Animated
      * @brief Changes to animation at index 'n' only if it isn't
      * already played
     */
-    void changeToNew(size_t n)
+    void changeToNew(const std::string& id)
     {
-        if(currentIdx != n)
-            changeTo(n);
+        if(currentKey != id)
+            changeTo(id);
     }
 
-    void add(const Animation& anim)
+    void add(const std::string& key, const Animation& anim)
     {
-        animations.push_back(anim);
+        if(currentKey.empty())
+            currentKey = key;
+        animations[key] = anim;
+    }
+
+    Animation& operator[](const std::string &key)
+    {
+        if(currentKey.empty())
+            currentKey = key;
+        return animations[key];
     }
 };
 

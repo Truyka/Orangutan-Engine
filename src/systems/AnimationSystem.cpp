@@ -14,7 +14,7 @@ void AnimationSystem::onNonFixedUpdate(const float dt)
     auto view = scene_->view<Animated, Sprite>();
     view.each([&](Animated& animated, Sprite& spr)
     {
-        if(animated.animations.size() == 0) return;
+        if(animated.size() == 0) return;
 
         Animation& anim = animated.current();
         Animation::Frame& frame = anim.current();
