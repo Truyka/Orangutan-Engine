@@ -66,7 +66,9 @@ Vector2f& Vector2f::normalize()
 Vector2f Vector2f::normalized() const
 {
     const float l = length();
-    return Vector2f(x / l, y / l);
+    return l == 0.f ?
+        Vector2f(0.f, 0.f) : 
+        Vector2f(x / l, y / l);
 }
 
 Vector2f& Vector2f::round()
