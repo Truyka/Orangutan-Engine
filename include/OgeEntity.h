@@ -35,6 +35,13 @@ public:
         return scene_->add<C>(entity_, std::forward<Args>(args)...);
     }
 
+    template<typename C, typename... Args>
+    C& set(Args&&... args)
+    {
+        OGE_ASSERT(scene_ != nullptr, "Trying to use a deleted entity!");
+        return scene_->set<C>(entity_, std::forward<Args>(args)...);
+    }
+
     template<typename C>
     C& get()
     {
