@@ -67,7 +67,7 @@ public:
     void remove()
     {
         OGE_ASSERT(scene_ != nullptr, "Trying to use a deleted entity!");
-        scene_->remove<C>(entity_);
+        scene_->removeComponent<C>(entity_);
     }
 
     void remove()
