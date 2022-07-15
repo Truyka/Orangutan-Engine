@@ -31,7 +31,9 @@ void PhysicsSystem::onUpdate(const float dt)
             Vector2f acc(0.f, 0.f);
             if(accel != nullptr)
             {
-                acc = accel->acc;
+                // The dt is needed here to convert
+                // received velocity gain into pixels/second
+                acc = accel->acc * dt;
             }
 
             vel.vel += acc + damp;
