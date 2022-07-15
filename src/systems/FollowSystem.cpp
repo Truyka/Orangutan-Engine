@@ -18,7 +18,7 @@ void FollowSystem::onUpdate(const float dt)
 
         if(trackedPos != nullptr)
         {
-            t.pos = Math::interpTo(t.pos, trackedPos->pos, follow.speed);
+            t.pos = Math::interpTo(t.pos, trackedPos->pos + follow.off, follow.speed);
         }
     });
 }
