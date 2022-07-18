@@ -27,7 +27,7 @@ void Renderer::render(Scene& scene, const double interpolate)
     window.x = 0;
     window.y = 0;
 
-    Vector2f cameraPos = scene.getCameraPosition(interpolate);
+    Vector2f cameraPos = scene.getCameraPosition(interpolate).round();
 
     struct RenderInfo
     {
