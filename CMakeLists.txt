@@ -60,6 +60,8 @@ target_link_libraries(orangutan PUBLIC
     sdl2_mixer
 )
 
+set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
+
 target_include_directories(orangutan PUBLIC ${INCLUDE_DIRS})
 
 add_executable(test main.cpp)

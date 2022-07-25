@@ -80,6 +80,7 @@ struct Sprite
     float rotation = 0.0;
     Flip flip = Flip::None;
     Vector2f center = Vector2f::null;
+    bool fixed = false;
 
     int zindex = 0;
 
