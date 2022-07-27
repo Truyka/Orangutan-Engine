@@ -59,9 +59,12 @@ public:
     */
     oge::Entity getCameraEntity();
     Vector2f getCameraPosition(const float interp = 1.0);
+    float getCameraZoom();
 
     Vector2f worldToScreen(Vector2f pos, float interp = 1.0);
     Vector2f screenToWorld(Vector2f pos, float interp = 1.0);
+    Rect worldToScreen(Rect r, float interp = 1.0);
+    Rect screenToWorld(Rect r, float interp = 1.0);
 
     // Implementation is inside SceneManager.h
     template<typename T>

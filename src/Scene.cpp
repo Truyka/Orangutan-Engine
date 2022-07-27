@@ -57,14 +57,44 @@ Vector2f Scene::getCameraPosition(const float interp)
     return Camera::getCurrentPosition(*this, interp); 
 }
 
+float Scene::getCameraZoom()
+{
+    Entity ent = getCameraEntity();
+    return ent.isValid() ?
+        ent.get<Camera>().zoom :
+        1.f;
+}
+
 Vector2f Scene::worldToScreen(Vector2f pos, float interp)
 {
-    return pos - getCameraPosition(interp);
+    return (pos - getCameraPosition(interp)) * getCameraZoom();
 }
 
 Vector2f Scene::screenToWorld(Vector2f pos, float interp)
 {
-    return pos + getCameraPosition(interp);
+    return pos / getCameraZoom() + getCameraPosition(interp);
+}
+
+Rect Scene::worldToScreen(Rect r, float interp)
+{
+    Vector2f origin(r.x, r.y);
+    Vector2f size(r.w, r.h);
+
+    origin = worldToScreen(origin, interp);
+    size *= getCameraZoom();
+
+    return Rect(origin.x, origin.y, size.x, size.y);
+}
+
+Rect Scene::screenToWorld(Rect r, float interp)
+{
+    Vector2f origin(r.x, r.y);
+    Vector2f size(r.w, r.h);
+
+    origin = screenToWorld(origin, interp);
+    size /= getCameraZoom();
+
+    return Rect(origin.x, origin.y, size.x, size.y);
 }
 
 void Scene::removeEntity(aecs::Entity ent)

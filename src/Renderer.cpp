@@ -28,6 +28,7 @@ void Renderer::render(Scene& scene, const double interpolate)
     window.y = 0;
 
     Vector2f cameraPos = scene.getCameraPosition(interpolate).round();
+    float zoom = scene.getCameraZoom();
 
     struct RenderInfo
     {
@@ -75,7 +76,13 @@ void Renderer::render(Scene& scene, const double interpolate)
 
         size *= sprite.scale * tran.scale;
 
-        Rect renderRect(coords.x, coords.y, size.x, size.y);
+        Rect renderRect(
+            coords.x * zoom, 
+            coords.y * zoom, 
+            size.x * zoom, 
+            size.y * zoom
+        );
+
         if(window.intersects(renderRect))
         {
             renderTargets.push(RenderInfo{info, renderRect, sprite, entity});
@@ -97,7 +104,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         // Debug staff - draws the hitboxes 
         scene.getSceneGraph()->draw(cameraPos);
 
-        auto view2 = scene.view<Collider, Transform>();
+        /*auto view2 = scene.view<Collider, Transform>();
         for(auto& entity : view2)
         {
             Rect draw = getHitbox(scene, entity);
@@ -105,7 +112,7 @@ void Renderer::render(Scene& scene, const double interpolate)
             draw.y -= cameraPos.y;
 
             graphics.drawRect(draw, Color::red);
-        }
+        }*/
     }
 }
 

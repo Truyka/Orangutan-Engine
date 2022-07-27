@@ -23,6 +23,7 @@ struct Camera
 {
     CameraType type = CameraType::Centered;
     Vector2f off = Vector2f(0.0, 0.0);
+    float zoom = 1.0;
 
     float shakeDuration = 0;
     float shakeForce = 0;
@@ -74,8 +75,8 @@ inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
     Rect window = Graphics::instance().getWindowRect();
     if(camera.type == CameraType::Centered)
     {
-        finalCameraPos.x -= window.w / 2.f;
-        finalCameraPos.y -= window.h / 2.f;
+        finalCameraPos.x -= window.w / camera.zoom / 2.f;
+        finalCameraPos.y -= window.h / camera.zoom / 2.f;
     }
 
     finalCameraPos += camera.off;

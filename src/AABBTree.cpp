@@ -383,11 +383,14 @@ void AABBTree::draw(const Vector2f& camera)
 
     this->traverse([&](auto& elem)
     {
-        Rect draw = elem.box;
-        draw.x -= camera.x;
-        draw.y -= camera.y;
+        Rect draw = scene_->worldToScreen(elem.box);
 
-        if(elem.isLeaf()) graphics.drawRect(draw, Color::green);
+        if(elem.isLeaf()) 
+        {
+            graphics.drawRect(draw, Color::green);
+            Rect actual = getHitbox(*scene_, elem.entity);
+            graphics.drawRect(scene_->worldToScreen(actual), Color::red);
+        }
         else graphics.drawRect(draw.widen(10), Color::blue);
     });
 }
