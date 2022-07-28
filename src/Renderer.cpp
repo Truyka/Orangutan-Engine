@@ -77,10 +77,10 @@ void Renderer::render(Scene& scene, const double interpolate)
         size *= sprite.scale * tran.scale;
 
         Rect renderRect(
-            coords.x * zoom, 
-            coords.y * zoom, 
-            size.x * zoom, 
-            size.y * zoom
+            coords.x * zoom,
+            coords.y * zoom,
+            std::round(size.x * zoom), 
+            std::round(size.y * zoom)
         );
 
         if(window.intersects(renderRect))
