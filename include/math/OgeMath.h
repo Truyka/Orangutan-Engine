@@ -7,7 +7,11 @@
 
 #include <cmath>
 
-namespace oge::Math
+namespace oge
+{
+
+
+namespace Math
 {
 
 
@@ -90,5 +94,8 @@ inline float smlimit(float x, float lim)
 }
 
 
-} // namespace oge::Math
+} // namespace Math
+
+
+} // namespace oge
 #endif // __MATH_H__
