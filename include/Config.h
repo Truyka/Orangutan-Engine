@@ -27,7 +27,7 @@ if(!(condition))                                            \
 }                                                         
 
 
-#define OGE_SPECIFY_CLASS_NAME(classname) static inline const char* _NAME_ = classname;
+#define OGE_SPECIFY_CLASS_NAME(classname) static constexpr const char* _NAME_ = classname;
 
 
 #define OGE_GET_CLASS_NAME(type) \
