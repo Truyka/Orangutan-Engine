@@ -7,6 +7,7 @@
 #include "components/Sprite.h"
 #include "components/Camera.h"
 #include "components/Follow.h"
+#include "components/Meta.h"
 #include "math/OgeMath.h"
 #include "OgeRandom.h"
 
@@ -27,7 +28,8 @@ void Renderer::render(Scene& scene, const double interpolate)
     window.x = 0;
     window.y = 0;
 
-    Vector2f cameraPos = scene.getCameraPosition(interpolate).round();
+    // TODO: think about rounding this one
+    Vector2f cameraPos = scene.getCameraPosition(interpolate);
     float zoom = scene.getCameraZoom();
 
     struct RenderInfo
@@ -69,7 +71,7 @@ void Renderer::render(Scene& scene, const double interpolate)
         if(size.x == 0) size.x = info.width;
         if(size.y == 0) size.y = info.height;
 
-        coords = Math::lerp(tran.oldPos.rounded(), tran.pos.rounded(), interpolate);
+        coords = Math::lerp(tran.oldPos, tran.pos, interpolate);
 
         coords += sprite.off;
         coords -= !sprite.fixed * cameraPos;
@@ -79,8 +81,8 @@ void Renderer::render(Scene& scene, const double interpolate)
         Rect renderRect(
             coords.x * zoom,
             coords.y * zoom,
-            std::round(size.x * zoom), 
-            std::round(size.y * zoom)
+            size.x * zoom, 
+            size.y * zoom
         );
 
         if(window.intersects(renderRect))

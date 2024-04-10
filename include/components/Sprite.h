@@ -4,6 +4,7 @@
 #include "Graphics.h"
 #include "math/OgeMath.h"
 #include "OgeEntity.h"
+#include "Components/Transform.h"
 
 #include <string>
 #include <float.h>

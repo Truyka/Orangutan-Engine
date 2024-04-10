@@ -1,7 +1,5 @@
-#ifndef __SCENE_H__
-#define __SCENE_H__
-
-#include "components/Camera.h"
+#ifndef __INCLUDE_SCENE__
+#define __INCLUDE_SCENE__
 
 #include "aecs/Registry.h"
 #include "SystemManager.h"
@@ -103,4 +101,4 @@ private:
 
 #include "OgeEntity.h"
 
-#endif // __SCENE_H__
+#endif /* __INCLUDE_SCENE__ */

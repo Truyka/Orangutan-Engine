@@ -2,6 +2,7 @@
 #include "Graphics.h"
 #include "OgeEntity.h"
 #include "Components/Meta.h"
+#include "Components/Camera.h"
 #include "OgeRandom.h"
 #include "math/OgeMath.h"
 

@@ -1,5 +1,5 @@
-#ifndef __CAMERA_H__
-#define __CAMERA_H__
+#ifndef __INCLUDE_COMPONENTS_CAMERA__
+#define __INCLUDE_COMPONENTS_CAMERA__
 
 #include "aecs/Registry.h"
 #include "math/OgeMath.h"
@@ -70,7 +70,7 @@ inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
         camera.off += RNG.rollDirection() * camera.shakeForce;
     }
 
-    finalCameraPos = Math::lerp(cameraTran.oldPos.rounded(), cameraTran.pos.rounded(), interp);
+    finalCameraPos = Math::lerp(cameraTran.oldPos, cameraTran.pos, interp);
 
     Rect window = Graphics::instance().getWindowRect();
     if(camera.type == CameraType::Centered)
@@ -97,4 +97,4 @@ inline Vector2f Camera::getCurrentCenter(aecs::Registry& reg, float interp)
 
 
 } // namespace camera
-#endif // __CAMERA_H__
+#endif /* __INCLUDE_COMPONENTS_CAMERA__ */

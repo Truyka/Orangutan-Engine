@@ -1,5 +1,5 @@
-#ifndef __SCENEGRAPH_H__
-#define __SCENEGRAPH_H__
+#ifndef __INCLUDE_SCENEGRAPH__
+#define __INCLUDE_SCENEGRAPH__
 
 #include "aecs/Registry.h"
 #include "math/Rect.h"
@@ -43,4 +43,4 @@ protected:
 
 
 } // namespace oge
-#endif // __SCENEGRAPH_H__
+#endif /* __INCLUDE_SCENEGRAPH__ */
