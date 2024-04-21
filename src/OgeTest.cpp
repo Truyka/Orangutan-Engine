@@ -92,7 +92,7 @@ public:
     MoveScript(SDL_Keycode w, SDL_Keycode s, SDL_Keycode a, SDL_Keycode d)
         : wKey(w), sKey(s), aKey(a), dKey(d)
     {
-
+        
     }
 
     void onDetach()
@@ -198,6 +198,17 @@ public:
             sound.play(entity_);
     }
 };
+
+/*
+	IMPORTANT TODOs:
+	-Fix issues with SceneGraph and AABBTree:
+		-Inner vector should shrink as entities are deleted
+		-Run some checks to ensure the tree rebalances properly after deleting an entity
+		-Optimize updating moving entities etc
+		-Minimize cases when the tree is fully iterated
+	-Add more debug options
+	-Make dt globally accessible
+*/
 
 /** TODO:
  * !!! Tree rebuild after too many removed entities
