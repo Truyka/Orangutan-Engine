@@ -1,6 +1,5 @@
 #include "AABBTree.h"
 
-#include "Timer.h"
 #include "Graphics.h"
 #include "components/Collider.h"
 #include "components/Physics.h"

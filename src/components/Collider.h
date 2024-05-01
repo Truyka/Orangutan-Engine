@@ -1,5 +1,5 @@
-#ifndef __COLLIDER_H__
-#define __COLLIDER_H__
+#ifndef __SRC_COMPONENTS_COLLIDER__
+#define __SRC_COMPONENTS_COLLIDER__
 
 #include "math/Rect.h"
 #include "OgeEntity.h"
@@ -54,4 +54,4 @@ inline Rect getHitbox(oge::Entity ent)
 
 
 } // namespace oge
-#endif // __COLLIDER_H__
+#endif /* __SRC_COMPONENTS_COLLIDER__ */

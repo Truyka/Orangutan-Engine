@@ -2,9 +2,9 @@
 #define __SRC_SCENE__
 
 #include "aecs/Registry.h"
-#include "SystemManager.h"
-#include "collision/AABBTree.h"
 #include "collision/SceneGraph.h"
+#include "SystemManager.h"
+#include "Config.h"
 
 #include <memory>
 #include <string>
@@ -15,9 +15,7 @@ namespace oge
 
 struct Removed {};
 
-// Forward declaration of an oge::Entity
 class Entity;
-
 class SceneManager;
 
 /**

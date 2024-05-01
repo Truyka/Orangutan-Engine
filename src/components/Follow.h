@@ -1,5 +1,5 @@
-#ifndef __FOLLOW_H__
-#define __FOLLOW_H__
+#ifndef __SRC_COMPONENTS_FOLLOW__
+#define __SRC_COMPONENTS_FOLLOW__
 
 #include "aecs/Entity.h"
 #include "math/Vector2f.h"
@@ -18,4 +18,4 @@ struct Follow
 
 
 } // namespace oge
-#endif // __FOLLOW_H__
+#endif /* __SRC_COMPONENTS_FOLLOW__ */

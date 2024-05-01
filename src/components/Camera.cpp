@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "aecs/Registry.h"
+
 #include "math/OgeMath.h"
 #include "Transform.h"
 #include "OgeRandom.h"
@@ -9,6 +9,7 @@
 
 namespace oge
 {
+
 
 void Camera::shake(float force, float duration)
 {

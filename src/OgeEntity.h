@@ -1,5 +1,5 @@
-#ifndef __OGEENTITY_H__
-#define __OGEENTITY_H__
+#ifndef __SRC_OGEENTITY__
+#define __SRC_OGEENTITY__
 
 #include "aecs/Entity.h"
 #include "Config.h"
@@ -104,4 +104,4 @@ private:
 
 
 } // namespace oge
-#endif // __OGEENTITY_H__
+#endif /* __SRC_OGEENTITY__ */

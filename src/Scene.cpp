@@ -6,6 +6,8 @@
 #include "OgeRandom.h"
 #include "math/OgeMath.h"
 
+#include "collision/AABBTree.h"
+
 #include <cstdlib>
 #include <math.h>
 

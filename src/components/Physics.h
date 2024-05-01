@@ -1,7 +1,7 @@
-#ifndef __PHYSICS_H__
-#define __PHYSICS_H__
+#ifndef __SRC_COMPONENTS_PHYSICS__
+#define __SRC_COMPONENTS_PHYSICS__
 
-#include "math/OgeMath.h"
+#include "math/Vector2f.h"
 
 namespace oge
 {
@@ -34,4 +34,4 @@ struct Acceleration
 
 
 } // namespace oge
-#endif // __PHYSICS_H__
+#endif /* __SRC_COMPONENTS_PHYSICS__ */

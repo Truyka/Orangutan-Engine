@@ -37,7 +37,6 @@ public:
     virtual void onNonFixedUpdate(const float) {}
     virtual void onCollisionEnter(CollisionInfo info) {}
 
-    /** @brief executes when Attaching the script on ScriptSystem onUpdate. */
     virtual void onDetach() {}
 
     void instatiate(Entity entity, ScriptList* scriptlist)
