@@ -1,5 +1,5 @@
-#ifndef __CSPRITE_H__
-#define __CSPRITE_H__
+#ifndef __SRC_COMPONENTS_SPRITE__
+#define __SRC_COMPONENTS_SPRITE__
 
 #include "Graphics.h"
 #include "math/OgeMath.h"
@@ -92,4 +92,4 @@ struct Sprite
 
 
 } // namespace oge
-#endif // __CSPRITE_H__
+#endif /* __SRC_COMPONENTS_SPRITE__ */

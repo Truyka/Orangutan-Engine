@@ -1,7 +1,5 @@
-#include "math/Rect.h"
-
-#include <cmath>
 #include "math/OgeMath.h"
+#include <SDL.h>
 
 namespace oge
 {

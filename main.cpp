@@ -7,7 +7,7 @@
 #include "SceneManager.h"
 #include "OgeGame.h"
 #include "InputHandler.h"
-#include "AABBTree.h"
+#include "collision/AABBTree.h"
 
 #include "components/Sprite.h"
 #include "components/Script.h"

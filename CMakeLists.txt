@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(orangutan VERSION 0.4.1)
 
+set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+
 set(CPP_SRCS 
     src/Graphics.cpp 
     src/Scene.cpp
@@ -8,9 +13,13 @@ set(CPP_SRCS
     src/InputHandler.cpp
     src/Timer.cpp
     src/Renderer.cpp
-    src/AABBTree.cpp
     src/OgeRandom.cpp
     src/OgeTest.cpp
+
+    src/components/Animation.cpp
+    src/components/Camera.cpp
+
+    src/collision/AABBTree.cpp
 
     src/sound/Audio.cpp
     src/sound/SoundEffect.cpp
@@ -31,15 +40,11 @@ set(INCLUDE_DIRS
     "C:/devel/SDL2_image/include/SDL2"
     "C:/devel/SDL2_ttf/include/SDL2"
     "C:/devel/SDL2_mixer/include/SDL2"
-    "include"
-    "include/components"
-    "include/systems"
+    "src"
+    "external"
 )
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED true)
-
-add_subdirectory("include/aecs")
+add_subdirectory("external/aecs")
 
 # TODO: replace with find_module
 link_directories("C:/devel/SDL2/lib")
@@ -47,9 +52,9 @@ link_directories("C:/devel/SDL2_image/lib")
 link_directories("C:/devel/SDL2_ttf/lib")
 link_directories("C:/devel/SDL2_mixer/lib")
 
-# add_executable(orangutan main.cpp ${CPP_SRCS})
 add_library(orangutan ${CPP_SRCS})
 
+target_include_directories(orangutan PUBLIC ${INCLUDE_DIRS})
 target_link_libraries(orangutan PUBLIC 
     aecslib 
     mingw32 
@@ -60,11 +65,8 @@ target_link_libraries(orangutan PUBLIC
     sdl2_mixer
 )
 
-set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
-
-target_include_directories(orangutan PUBLIC ${INCLUDE_DIRS})
-
 add_executable(test main.cpp)
-target_link_libraries(test PUBLIC orangutan)
+
 target_include_directories(test PUBLIC ${INCLUDE_DIRS})
+target_link_libraries(test PUBLIC orangutan)
 

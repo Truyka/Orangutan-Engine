@@ -2,7 +2,8 @@
 #define __RECT_H__
 
 #include "Vector2f.h"
-#include <SDL.h>
+
+struct SDL_Rect;
 
 namespace oge
 {

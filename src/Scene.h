@@ -1,10 +1,10 @@
-#ifndef __INCLUDE_SCENE__
-#define __INCLUDE_SCENE__
+#ifndef __SRC_SCENE__
+#define __SRC_SCENE__
 
 #include "aecs/Registry.h"
 #include "SystemManager.h"
-#include "AABBTree.h"
-#include "SceneGraph.h"
+#include "collision/AABBTree.h"
+#include "collision/SceneGraph.h"
 
 #include <memory>
 #include <string>
@@ -101,4 +101,4 @@ private:
 
 #include "OgeEntity.h"
 
-#endif /* __INCLUDE_SCENE__ */
+#endif /* __SRC_SCENE__ */

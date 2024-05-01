@@ -1,6 +1,4 @@
-#ifndef __INCLUDE_COMPONENTS_CAMERA__
-#define __INCLUDE_COMPONENTS_CAMERA__
-
+#include "Camera.h"
 #include "aecs/Registry.h"
 #include "math/OgeMath.h"
 #include "Transform.h"
@@ -12,46 +10,24 @@
 namespace oge
 {
 
-
-enum class CameraType
+void Camera::shake(float force, float duration)
 {
-    Normal,
-    Centered
-};
-
-struct Camera
-{
-    CameraType type = CameraType::Centered;
-    Vector2f off = Vector2f(0.0, 0.0);
-    float zoom = 1.0;
-
-    float shakeDuration = 0;
-    float shakeForce = 0;
-    Vector2f savedOffset = Vector2f(0.0, 0.0);
-    
-    void shake(float force, float duration)
+    if(shakeDuration <= 0)
     {
-        if(shakeDuration <= 0)
-        {
-            savedOffset = off;
-        }
-        shakeDuration = duration;
-        shakeForce = force;
+        savedOffset = off;
     }
+    shakeDuration = duration;
+    shakeForce = force;
+}
 
-    static aecs::Entity getCurrent(aecs::Registry& reg);
-    static Vector2f getCurrentPosition(aecs::Registry& reg, float interp = 1.f);
-    static Vector2f getCurrentCenter(aecs::Registry& reg, float interp = 1.f);
-};
-
-inline aecs::Entity Camera::getCurrent(aecs::Registry& reg)
+aecs::Entity Camera::getCurrent(aecs::Registry& reg)
 {
     auto cameras = reg.view<Camera, Transform>();
     aecs::Entity ent = cameras.front();
     return ent.isValid() ? ent : aecs::Entity();
 }
 
-inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
+Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
 {
     aecs::Entity ent = Camera::getCurrent(reg);
     if(!ent.isValid())
@@ -84,7 +60,7 @@ inline Vector2f Camera::getCurrentPosition(aecs::Registry& reg, float interp)
     return finalCameraPos; 
 }
 
-inline Vector2f Camera::getCurrentCenter(aecs::Registry& reg, float interp)
+Vector2f Camera::getCurrentCenter(aecs::Registry& reg, float interp)
 {
     Rect window = Graphics::instance().getWindowRect();
 
@@ -95,6 +71,5 @@ inline Vector2f Camera::getCurrentCenter(aecs::Registry& reg, float interp)
     return pos;
 }
 
-
-} // namespace camera
-#endif /* __INCLUDE_COMPONENTS_CAMERA__ */
+    
+} // namespace oge

@@ -1,5 +1,5 @@
-#ifndef __MATH_H__
-#define __MATH_H__
+#ifndef __SRC_MATH_OGEMATH__
+#define __SRC_MATH_OGEMATH__
 
 #include "Vector2f.h"
 #include "Rect.h"
@@ -98,4 +98,4 @@ inline float smlimit(float x, float lim)
 
 
 } // namespace oge
-#endif // __MATH_H__
+#endif /* __SRC_MATH_OGEMATH__ */
