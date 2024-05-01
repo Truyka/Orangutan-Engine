@@ -1,5 +1,5 @@
-#ifndef __OGETEST_H__
-#define __OGETEST_H__
+#ifndef __INCLUDE_OGETEST__
+#define __INCLUDE_OGETEST__
 
 #include "OgeGame.h"
 #include "Scene.h"
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif // __OGETEST_H__
+#endif /* __INCLUDE_OGETEST__ */
